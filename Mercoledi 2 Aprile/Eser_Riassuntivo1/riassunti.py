@@ -6,8 +6,8 @@ def cosa_e_python():
     print("Python è un linguaggio di programmazione interpretato, orientato agli oggetti, dinamico e ad alto livello. rilasciato nel 1991. ")
     print("interpretato vuol dire che nel momento che mandiamo in esecuzione non compila subito")
     print("IL CREATORE DI PYTHON È GUIDO VAN ROSSUM. LUI SI ANNOIAVA A SCRIVERE IN C E HA CREATO PYTHON. E QUINDI CREA UN LINGUAGGIO PER PROGRAMMATORI.")
+    print()
 
-print()
 
 # 2. UML (Unified Modeling Language)
 def uml():
@@ -16,24 +16,24 @@ def uml():
     print("L'UML ha come caratteristica la visuale ossia utilizza diagrammi per rappresentare concettualmente e fisicamente gli elementi e le interazioni.")
     print("L'UML è polivalente ossia non è limitato a software OOP ossia OBJECT ORIENTED PROGRAMMING.")
     print("L'UML è estensibile ossia è personalizzabile quindi si può adattare ad esigenze specifiche.")
+    print()
 
-print()
 
 #3. Uso di print()
 #print viene usato per stampare a video i valori
 def uso_di_print():
     print("Questo è un esempio di print:")
     print("print viene usato per stampare a video i valori")
+    print()
 
-print()
 
 # 4. uso di input()
 def uso_di_input():
     print("Questo è un esempio di input:")
     nome = input("Inserisci il tuo nome: ") #input viene usato per ricevere input da tastiera
     print("Il tuo nome è:", nome)
+    print()
 
-print()
 
 # 5. Commenti in Python
 # I commenti in Python iniziano con il simbolo # e questo ne è un esempio
@@ -53,8 +53,8 @@ def tipi_di_dato():
     print("4. Booleani (bool): True, False")
     numero = int(input("Inserisci un numero intero: ")) # int è un tipo di dato per gli interi
     stringa = input("Inserisci una stringa: ") # str è un tipo di dato per le stringhe
+    print()
 
-print()
 # 7. OPERATORI LOGICI E STRUTTURE DI CONTROLLO IF-ELIF-ELSE
 def operatore_logici_e_strutture_di_controllo():
     #ESEMPIO
@@ -71,8 +71,7 @@ def operatore_logici_e_strutture_di_controllo():
         print("Il numero è positivo o pari")
     else: # ELSE è una struttura di controllo che viene usata quando non si verifica nessuna delle altre condizioni
         print("Il numero non è positivo o pari")
-
-print()
+    print()
 
 # 8. Liste
 def liste():
@@ -87,7 +86,7 @@ def liste():
     conta_lista = len(lista_numeri) # conta quanti elementi ci sono nella lista
     print("La lista di numeri è:", lista_numeri)
     print("La lista di elementi è:", lista_elementi)
-print()
+    print()
 
 # 9. Match
 def match_case():
@@ -101,9 +100,8 @@ def match_case():
             print("Hai inserito 2.")
      case _: # default è una struttura di controllo che viene eseguita quando non viene trovata una condizione corrispondente
             print("Numero non riconosciuto nel match-case.")
+ print()
 
-
-print()
 
 # 10. uso di while e range
 
@@ -117,9 +115,8 @@ def uso_di_while_e_range():
     print("range() è una funzione incorporata in Python che restituisce una sequenza di numeri interi che possono essere utilizzati in cicli for o in altre situazioni in cui è necessario iterare su un insieme di valori. ")
     for i in range(1, 6): 
         print(i)
+    print()
 
-
-print()
     
 # 11. Funzioni
 # le funzioni sono un modo per organizzare il codice in modo efficiente e riutilizzabile

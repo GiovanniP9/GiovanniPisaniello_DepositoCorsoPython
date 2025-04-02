@@ -4,7 +4,7 @@ from riassunti import *
 
 comando = True
 
-while True:
+while comando:
     print("Menu:")
     print("1. Python")
     print("2. UML")
