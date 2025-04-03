@@ -9,19 +9,19 @@ class Biblioteca:# Classe che rappresenta una biblioteca
         return libro
     def rimuovi_libro(self, titolo):# Rimuove un libro dalla biblioteca
         libro_rimosso = None
-        for libro in self.libri:
+        for libro in self.libri: # Cerca il libro nella lista
             if libro.titolo == titolo:
-                libro_rimosso = libro
+                libro_rimosso = libro # Se il libro è stato trovato, lo memorizza
                 break
-        if libro_rimosso:
+        if libro_rimosso: # Se il libro è stato trovato, lo rimuove
             self.libri.remove(libro_rimosso)
-        return libro_rimosso
+        return libro_rimosso # Ritorna il libro rimosso o None se non è stato trovato
     def mostra_libri(self):# Mostra i libri presenti nella biblioteca
-        if self.libri:
+        if self.libri: # Se la biblioteca non è vuota, mostra i libri
             print("Libri presenti nella biblioteca:")
-            for libro in self.libri:
+            for libro in self.libri: # Stampa le caratteristiche del libro
                 print(f"{libro.titolo} - {libro.autore} - {libro.pagine} pagine")
-        else:
+        else:# Se la biblioteca è vuota, mostra un messaggio di avviso
             print("Nessun libro presente nella biblioteca.")
     def crea_libro(self): # Crea un libro da input
         titolo = input("Inserisci il titolo del libro: ")
@@ -38,7 +38,7 @@ class Biblioteca:# Classe che rappresenta una biblioteca
             print(f"Titolo: {libro_trovato.titolo}")
             print(f"Autore: {libro_trovato.autore}")
             print(f"Numero di pagine: {libro_trovato.pagine}")
-        else:
+        else: # Stampa un messaggio di avviso se il libro non è trovato
             print("Libro non trovato.")
 
 def menu(): # Menu principale
