@@ -14,12 +14,12 @@ class Automobile: # dichiaro la classe
         print(f"Sono state create {cls.numero_istanze} automobili.")
 
 #sostituire mentalmente il self con la variabile che rappresenta l'oggetto stesso
-auto1 = Automobile("Fiat", "500") # crea un oggetto di Automobile
-auto2 = Automobile("BMW", "X3") # crea un altro oggetto di Automobile
-auto1.stampa_info() # stampa "L'automobile è una Fiat 500"
-auto2.stampa_info() # stampa "L'automobile è una BMW X3"
-auto1.numero_di_ruote = 6 # modifica il numero di ruote dell'auto1
-print(auto1.numero_di_ruote) # stampa 6
+Auto1 = Automobile("Fiat", "500") # crea un oggetto di Automobile
+Auto2 = Automobile("BMW", "X3") # crea un altro oggetto di Automobile
+Auto1.stampa_info() # stampa "L'automobile è una Fiat 500"
+Auto2.stampa_info() # stampa "L'automobile è una BMW X3"
+Auto1.numero_di_ruote = 6 # modifica il numero di ruote dell'auto1
+print(Auto1.numero_di_ruote) # stampa 6
 Automobile.contare_automobili() # Output: Sono state create 2 automobili.
 print()
 
@@ -31,10 +31,10 @@ class Persona:
         print(f"Ciao, mi chiamo {self.nome}")
         
 # Creazione di un oggetto Persona
-p = Persona("Pippo", 30)
-print(p.nome) # Output: Pippo
-print(p.eta) # Output: 30
-p.saluta() # Output: Ciao, mi chiamo Pippo
+P = Persona("Pippo", 30)
+print(P.nome) # Output: Pippo
+print(P.eta) # Output: 30
+P.saluta() # Output: Ciao, mi chiamo Pippo
 print()
 
 #METODO STATICO
@@ -57,8 +57,8 @@ class Contatore:
         print(f"Sono state create {cls.numero_istanze} istanze.")
         
 # Creazione di alcune istanze
-c1 = Contatore()
-c2 = Contatore()
+C1 = Contatore()
+C2 = Contatore()
 Contatore.mostra_numero_istanze()# Output: Sono state create 2 istanze.
 print()
 
