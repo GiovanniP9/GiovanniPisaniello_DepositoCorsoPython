@@ -1,6 +1,6 @@
 from eser_classi2 import Libro
 
-class Biblioteca:
+class Biblioteca:# Classe che rappresenta una biblioteca
     def __init__(self): # Inizializza la biblioteca con una lista vuota
         self.libri = []
     def aggiungi_libro(self, titolo, autore, pagine):# Aggiunge un libro alla biblioteca
@@ -70,4 +70,5 @@ def menu(): # Menu principale
              case '5': # esci
                  print("Arrivederci!")
                  break
+
 menu() # Esegue il menu principale
