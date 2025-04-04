@@ -104,8 +104,6 @@ def menu_fabbrica():
             case '6':# Esci dal programma
                 print("Arrivederci!")
                 break
-            case _:# Gestisci un'opzione non valida
-                print("Opzione non valida. Riprova.")
 
 # Esecuzione del menu della fabbrica
 menu_fabbrica()
