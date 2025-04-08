@@ -8,11 +8,12 @@ def aggiungi_alunno(dizionario):
     nome = input("Inserisci il nome dell'alunno: ")
     voti = []
     print("Inserisci i voti dell'alunno separati da uno spazio: ")
-    while True:
-        voto = input()
+    while True: # Ciclo per inserire i voti
+        voto = input("Inserisci un voto (o 'fine' per terminare): ")
         if voto.lower() == "fine":
             break
         voti.append(voto) # Aggiungi il voto alla lista dei voti
+        
     voti = [float(voto) for voto in voti]  # Converti i voti in float
     media = calcola_media(voti) # Calcola la media dei voti
     dizionario[nome] = { # Aggiungi l'alunno al dizionario
