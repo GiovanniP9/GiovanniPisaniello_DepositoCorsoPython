@@ -1,6 +1,6 @@
 def è_palindroma(stringa):
     nuova_stringa = ''.join(filter(str.isalpha, stringa))    #rimuovere tutto tranne le lettere alfabetiche
-    return nuova_stringa == nuova_stringa[::-1]  # controlla se la stringa è palindroma
+    return nuova_stringa == nuova_stringa[::-1]  # controlla se la stringa è palindroma confrontando la stringa con la sua inversa e ritorna il risultato
 def risultato_palindroma(frase):
     if è_palindroma(frase): # verifica se la frase è palindroma
         return "La frase è palindroma"
