@@ -73,3 +73,50 @@
 
 #utilizzo la funzione map per convertire i numeri in stringhe e riordinare i risultati
 
+#MODULI PYTHON
+# import random ma cosi importo tutta la libreria
+#inoltre per richiamare una funzione dall'altra libreria uso il nome della libreria seguito dal nome della funzione
+# se facciamo import random as r: #aggiungiamo un alias per random
+#se vogliamo solo un metodo dalla libreria possiamo scrivere
+# from random import randint
+#randit() senza usare il nome della libreria
+
+#try e except per gestire eccezioni
+
+#try: # codice che potrebbe generare un'eccezione
+#except viene eseguito quando un'eccezione viene generata
+# a = 0
+# try:
+#     print(8 / a)
+# except ValueError as e: # con ValueError posso specificare solo per il valore
+#     print("l'errore è nel valore")
+# except ZeroDivisionError as e: #con ZeroDivisionError posso specificare solo per la divisione per zero
+#     print("L'errore è:", e)
+# except:
+#     print("ERRORE sconosciuto") # posso specificare un'eccezione generica
+# print ("proseguo con il resto del codice")
+
+# CSV
+# a intende appendere i dati dal file
+# r intende leggere i dati dal file
+# x intende scrivere i dati nel file
+
+# def scrittura(metodo,stringa):
+#     with open('prova.txt', 'a') as file:
+#          file.write(stringa)
+# scrittura("w", 'Ciao, ')
+
+# def lettura(): #lettura dei dati dal file
+#     with open('prova.txt', 'r') as file:
+#         contenuto = file.read()
+#     return contenuto
+
+# print(lettura())
+
+# clienti = [["nome","cognome","via"],
+#            ["Giorgio","Pisaniello","Via Roma 12"],
+#            ["Giuseppe","Rossi","Via Milano 34"]]
+# righe =[]
+# for riga in clienti:
+#     righe.append(",".join(riga))
+# file = "\n".join(righe)
