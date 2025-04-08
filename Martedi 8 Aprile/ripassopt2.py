@@ -61,14 +61,15 @@
 # pari_lista = list(filter(pari, lista)) #uso la funzione filter per applicare la funzione alla lista
 # print(pari_lista) #stampo la lista dei numeri pari
 
-lista = [1, 2, 3, 4, 5]
+# lista = [1, 2, 3, 4, 5]
 
 # stringa = '-'.join(lista) # non va perche che la lista contiene elementi di tipo diverso
 # print(stringa) #stampo la lista concatenata con un trattino
 
 #utilizzo la funzione map per convertire i numeri in stringhe
-stringhe_lista = list(map(str, lista))
-stringa = '-'.join(stringhe_lista)
-print(stringa) #stampo la lista concatenata con un trattino
+# stringhe_lista = list(map(str, lista))
+# stringa = '-'.join(stringhe_lista)
+# print(stringa) #stampo la lista concatenata con un trattino
 
 #utilizzo la funzione map per convertire i numeri in stringhe e riordinare i risultati
+
