@@ -6,16 +6,22 @@ def leggi_file(nome_file):
     dizionario = {}
     try:
         with open(nome_file, 'r') as file:
-            file.readline()
+            for riga in file:
+                nome, voti_str = riga.strip().split(',') # Divide la riga in nome e voti
+                voti = list(map(int, voti_str.split())) 
+                dizionario[nome] = {
+                    "voti": voti,
+                    "media": calcola_media(voti)}
     except FileNotFoundError:
         print(f"Il file '{nome_file}' non esiste.")
         pass
     return dizionario
 
-def scrivi_file(nome_file, dizionario):
+def scrivi_file(nome_file, dizionario): # Scrivi i voti in un file
     with open(nome_file, 'w') as file:
-        file.writelines()  # scrivi intestazione file
-        
+        for nome, info in dizionario.items(): # Scrivi i voti in un file
+            voti_str = ', '.join(map(str, info['voti']))
+            file.write(f" {nome}, {voti_str}\n")
             
 def aggiungi_alunno(dizionario):
     nome = input("Insertisci il nome dell'alunno: ")
