@@ -82,17 +82,17 @@ def elimina_animali():
 alex = Leone("Alex", 5)
 alex.parla()
 alex.caccia()
-alex.salva()
+# alex.salva()
 
 melman = Giraffa("Melman", 7)
 melman.parla()
 melman.mangia()
-melman.salva()
+# melman.salva()
 
 riko = Pinguino("Riko", 3)
 riko.parla()
 riko.nuota()
-riko.salva()
+# riko.salva()
 
 stampa_tutti_animali()
 
