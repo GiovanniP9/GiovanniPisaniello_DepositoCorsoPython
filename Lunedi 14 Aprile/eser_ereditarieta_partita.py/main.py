@@ -133,12 +133,15 @@ def partita():
     squadra1 = giocatori_ids[:5]
     squadra2 = giocatori_ids[5:10]
     
+    ################################
+            #da rivedere
     # print("\nSquadra 1:")
     # for giocatore in squadra1:
     #     print(f"- {giocatore[1]}")
     # print("\nSquadra 2:")
     # for giocatore in squadra2:
     #     print(f"- {giocatore[1]}")
+    ################################
         
     mycursor.execute("SELECT m.nome FROM allenatori a JOIN membri_squadra m ON a.membro_id = m.id")
     allenatori = [row[0] for row in mycursor.fetchall()]
