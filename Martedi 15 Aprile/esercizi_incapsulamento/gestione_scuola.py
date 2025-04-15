@@ -95,7 +95,6 @@ class Scuola:
 def crea_tabelle(cursor):
     # Crea il database se non esiste
     cursor.execute("CREATE DATABASE IF NOT EXISTS scuoladb;")
-    cursor.execute("USE ScuolaDB;")
 
     # Crea la tabella Persona
     cursor.execute("""
