@@ -17,7 +17,7 @@ class Rettangolo(Forma):
     def perimetro(self):
         return 2 * (self.larghezza + self.altezza)
     
-f = Forma() # TypeError: Can't instantiate abstract class Forma
+# f = Forma() # TypeError: Can't instantiate abstract class Forma
 r = Rettangolo(5, 10)
 print(r.area()) # Output: 50
 print(r.perimetro()) # Output: 30
