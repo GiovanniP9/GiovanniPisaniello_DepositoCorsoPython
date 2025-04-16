@@ -39,7 +39,7 @@ def menu():
         case _:
             print("Scelta non valida.")
             return None
-    try:
+    try: # Controlla se l'importo è valido
         importo = float(input("Inserisci l'importo da pagare: "))
         if importo <= 0:
             print("L'importo deve essere maggiore di zero.")
