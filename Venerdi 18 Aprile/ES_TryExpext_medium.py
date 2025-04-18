@@ -55,8 +55,8 @@ def esempio_completo(lista, dizionario, file_path):
 
 # --- Esempio di chiamata ---
 if __name__ == "__main__":
-    lis = [10, 20]                # lista troppo corta per lis[2]
-    diz = {"altra": "valore"}     # non contiene "chiave"
+    lis = [10, 20, 30]                # lista troppo corta per lis[2]
+    diz = {"chiave": "valore"}     # non contiene "chiave"
     percorso = "non_esiste.txt"   # file inesistente
 
     esempio_completo(lis, diz, percorso)
