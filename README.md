@@ -26,7 +26,7 @@ Questo repository contiene il materiale prodotto e utilizzato durante un corso c
   Questo file, con la descrizione dell'intero repository.
 
 ## 🐍 Argomenti trattati
-
+IN AGGIORNAMENTO
 - Concetti base di Python (variabili, funzioni, tipi di dato)
 - Programmazione orientata agli oggetti (classi, ereditarietà, incapsulamento, polimorfismo, astrazione)
 - Gestione file e input/output
