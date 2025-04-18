@@ -12,7 +12,7 @@ inverti_righe = matrice[::-1] # Inverte le righe della matrice
 print("Matrice con righe invertite:\n", inverti_righe)
 
 indici = np.arange(inverti_righe.shape[0]) # Crea un array di indici per la diagonale principale, shape[0] mi da la dimensione della matrice
-diagonale = inverti_righe[indici, indici] # Estrae la diagonale principale
+diagonale = inverti_righe[indici, indici] # Estrae la diagonale principale usando gli indici
 print("Diagonale principale:\n", diagonale)
 
 modificata = inverti_righe.copy() # Crea una copia della matrice invertita

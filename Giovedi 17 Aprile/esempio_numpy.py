@@ -24,5 +24,6 @@ import numpy as np
 
 #uso di reshape per cambiare la forma dell'array
 arr = np.arange(6)
-reshaped_arr = arr.reshape((2, 3))
+reshaped_arr = arr.reshape((2, 3)) # Cambia la forma dell'array in 2 righe e 3 colonne
+# La funzione reshape restituisce una vista dell'array originale, non una copia
 print(reshaped_arr) # Output: [[0 1 2] [3 4 5]]

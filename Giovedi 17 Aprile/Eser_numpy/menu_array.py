@@ -46,7 +46,7 @@ def crea_matrice_da_array(array_list):
         return None
     
     lunghezze = [len(arr) for arr in array_list]
-    if len(set(lunghezze)) != 1:
+    if len(set(lunghezze)) != 1: # Controlla se tutte le lunghezze sono uguali
         print("Tutti gli array devono avere la stessa lunghezza per creare una matrice.")
         return None
     matrice = np.array(array_list)
