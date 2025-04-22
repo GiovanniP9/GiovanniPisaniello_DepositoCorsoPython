@@ -9,7 +9,7 @@ def create_database_and_table(nome_db):
         conn = mysql.connector.connect(
             host='localhost',
             user='root',
-            password='GiFeTe251098?',# 'password' del tuo server MySQL
+            password='',# 'password' del tuo server MySQL
         )
         cursor = conn.cursor()
         # Creazione del database
@@ -85,7 +85,7 @@ def connect_to_database(nome_db):
         conn = mysql.connector.connect(
             host='localhost',
             user='root',
-            password='GiFeTe251098?',# 'password' del tuo server MySQL
+            password='',# 'password' del tuo server MySQL
             database=nome_db
         )
         if conn.is_connected():
