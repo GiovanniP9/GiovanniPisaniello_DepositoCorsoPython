@@ -11,7 +11,4 @@ df = pd.DataFrame(data)
 
 grouped_df = df.groupby('Prodotto').sum()
 
-
-grouped_df['Vendite Totali'] = grouped_df['Vendite']
-
 print(grouped_df)
