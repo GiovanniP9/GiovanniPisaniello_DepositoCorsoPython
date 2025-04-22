@@ -50,7 +50,7 @@ def ordina_dataframe():
 
 #numero vendite per citta
 def vendite_per_citta():
-    vendite_per_citta = df['Citta'].value_counts()
+    vendite_per_citta = df['Citta'].counts()
     print("Numero vendite per città:")
     print(vendite_per_citta)
 
