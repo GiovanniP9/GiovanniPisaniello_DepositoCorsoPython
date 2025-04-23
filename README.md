@@ -1,43 +1,31 @@
-# GiovanniPisaniello_DepositoCorsoPython
+# 📘 GiovanniPisaniello_DepositoCorsoPython
 
-Questo repository contiene il materiale prodotto e utilizzato durante un corso completo di programmazione in Python. Include esercizi pratici, basi di dati, diagrammi UML e altri strumenti didattici.
+Benvenuto nel deposito ufficiale del corso di Python curato da Giovanni Pisaniello. Questo repository raccoglie tutti i materiali, esercitazioni, progetti ed esempi realizzati durante il percorso formativo.
 
-## 📁 Contenuto del repository
+## 📚 Contenuti principali
 
-- ✅ **Cartelle giornaliere del corso**  
-  Ogni giorno di lezione ha una propria cartella con esercizi e materiali specifici.
+- Fondamenti di Python: sintassi, variabili, strutture di controllo, funzioni
+- OOP: classi, ereditarietà, incapsulamento, polimorfismo, astrazione
+- Gestione file: lettura e scrittura su file di testo
+- Database: interazione con SQLite e MySQL
+- Decoratori, lambda, map/filter, variabili globali
+- Progettazione UML: diagrammi per il design delle classi
+- Menu interattivi con `match-case`
+- Analisi dati: utilizzo di `pandas`, `numpy`, `matplotlib`, `scikit-learn` (progetti avanzati)
 
-- **`Modelli_UML/`**  
-  Diagrammi UML per la progettazione di software orientato agli oggetti.
+## 🗂️ Struttura del repository
 
-- **`classe.txt`**  
-  Dati testuali per esercitazioni su lettura/scrittura file.
+- `GiornoX/`: materiale didattico suddiviso per giornata
+- `Modelli_UML/`: diagrammi UML in PDF o immagine
+- `README.md`: questo file
 
-- **`numeri.txt`**  
-  File contenente numeri per esercizi di manipolazione e calcolo.
+## 🧠 Progetti chiave
 
-- **`zoo.db`**  
-  Database SQLite per esercizi di gestione e interrogazione dati.
+- Sistema di gestione ristorante: login, inventario, vendite
+- Analisi vendite videogiochi: aggregazioni e tabelle pivot con pandas
+- Predizione Churn Rate: machine learning su dataset clienti telecomunicazioni
 
-- **`.gitignore`**  
-  File per escludere elementi non rilevanti dal controllo di versione Git.
+## 🛠️ Requisiti
 
-- **`README.md`**  
-  Questo file, con la descrizione dell'intero repository.
-
-## 🐍 Argomenti trattati
-    IN AGGIORNAMENTO
-- Concetti base di Python (variabili, funzioni, tipi di dato)
-- Programmazione orientata agli oggetti (classi, ereditarietà, incapsulamento, polimorfismo, astrazione)
-- Gestione file e input/output
-- Gestione di database con SQLite
-- Gestione di database con `mysql-connector`
-- Modellazione UML
-- Uso di strutture dati complesse e decoratori
-- Uso di `match-case` per la gestione dei menu
-- USO di classi e oggetti
-- Uso di librerie come Numpy
-
-## 📌 Obiettivo
-
-Fornire un deposito centralizzato di esercizi, progetti e risorse per il consolidamento della programmazione in Python, adatto sia per lo studio individuale sia per il supporto a lezioni frontali.
+- Python 3.10+
+- Librerie consigliate: `pandas`, `numpy`, `matplotlib`, `scikit-learn`, `mysql-connector-python`
