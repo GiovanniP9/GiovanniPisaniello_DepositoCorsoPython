@@ -1,0 +1,38 @@
+
+Descrizione del Programma di Analisi Clienti:
+
+Il programma è progettato per effettuare un'analisi esplorativa dei dati relativi ai clienti di una compagnia di telecomunicazioni. Il file CSV di input contiene informazioni su vari clienti, inclusi dettagli come età, durata dell'abbonamento, tariffa mensile, dati consumati e se hanno lasciato il servizio (Churn). Il programma è strutturato in diverse fasi di analisi e pulizia dei dati.
+
+Le funzionalità principali del programma sono le seguenti:
+
+1. **Esplorazione dei Dati (Metodo: esplora_dati)**
+   - Visualizza informazioni generali sul DataFrame (tipi di dati, memoria utilizzata, etc.).
+   - Mostra statistiche descrittive (media, deviazione standard, etc.) per le colonne numeriche.
+   - Mostra la distribuzione della colonna 'Churn' (chi ha lasciato il servizio vs chi no).
+   - Visualizza il conteggio dei valori mancanti nelle varie colonne.
+
+2. **Pulizia dei Dati (Metodo: pulisci_dati)**
+   - Rimuove righe con valori nulli o duplicati.
+   - Rimuove righe dove la colonna 'Età', 'Tariffa_Mensile', o 'Dati_Consumati' sono inferiori o uguali a zero.
+   - Stampa il numero di righe iniziali e finali per mostrare quante righe sono state eliminate.
+
+3. **Analisi Esplorativa (Metodo: analisi_esplorativa)**
+   - Calcola la colonna 'Costo_Gb', che è il costo per gigabyte consumato dal cliente.
+   - Esegui un'analisi del comportamento medio dei clienti in base alla variabile 'Churn', calcolando la media di 'Età', 'Durata_Abbonamento', 'Tariffa_Mensile', e 'Dati_Consumati' per ciascun valore di 'Churn'.
+   - Calcola la correlazione tra le colonne numeriche per identificare relazioni tra variabili.
+
+4. **Preparazione dei Dati (Metodo: preparazione_dati)**
+   - Converte la colonna 'Churn' in formato numerico, dove 'Sì' diventa 1 e 'No' diventa 0. Gestisce casi con valori inconsistenti (es. 'si', 'no', spazi extra).
+   - Normalizza le colonne numeriche (Età, Durata_Abbonamento, Tariffa_Mensile, Dati_Consumati, Costo_Gb) utilizzando la formula: (valore - media) / deviazione standard.
+
+5. **Menu Interattivo**
+   - Il programma è dotato di un menu che permette di eseguire le operazioni di esplorazione, pulizia, analisi esplorativa e preparazione dei dati in modo interattivo.
+
+Descrizione del Codice:
+- Il programma è costruito in una classe `AnalisiClienti`, che riceve il percorso del file CSV come input.
+- I metodi della classe permettono di gestire l'esplorazione, la pulizia, l'analisi e la preparazione dei dati.
+- Per l'analisi, viene utilizzato principalmente Pandas per la gestione dei dati e NumPy per la normalizzazione.
+
+Requisiti:
+- Pandas (per la gestione dei dati)
+- NumPy (per la normalizzazione)
