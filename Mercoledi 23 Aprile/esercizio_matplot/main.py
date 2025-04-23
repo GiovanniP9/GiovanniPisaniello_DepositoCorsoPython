@@ -6,19 +6,19 @@ class AnalisiTemperature:
     def __init__(self):
         self.df = None
     
-    def genera_dati(self,):
+    def genera_dati(self,):# Genera dati casuali per le temperature
         giorni = pd.date_range(start='2025-01-01', periods=30, freq='D')
         citta = ['Roma', 'Milano', 'Napoli']
         
         dati = []
         for g in giorni:
             for c in citta:
-                temp = np.random.randint(-5, 41)  # Genera una temperatura casuale tra -5 e 41
+                temp = np.random.randint(-5, 41)  # Genera una temperatura casuale tra -5 e 40
                 dati.append({'Giorno': g, 'Città': c, 'Temperatura': temp})
         self.df = pd.DataFrame(dati)
         print("Dati generati:")
     
-    def calcola_statistiche(self):
+    def calcola_statistiche(self):# Calcola le statistiche per ogni città
         if self.df is None:
             print("Nessun dato disponibile. Genera i dati prima di calcolare le statistiche.")
             return
@@ -40,7 +40,7 @@ class AnalisiTemperature:
             plt.ylabel('Temperatura (°C)')
             plt.legend()
             plt.show()
-        else:
+        else: # Se è specificata una città, visualizza solo i dati per quella città
             dati_citta = self.df[self.df['Città'] == citta]
             plt.figure(figsize=(10, 6))
             plt.plot(dati_citta['Giorno'], dati_citta['Temperatura'], label=citta, color='blue')
@@ -80,4 +80,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-                
