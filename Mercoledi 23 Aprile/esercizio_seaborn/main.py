@@ -51,7 +51,7 @@ class Normalizer:
         
         # grafico dei dati originali
         plt.figure(figsize=(10, 5))
-        sns.scatterplot(data=self.df, x='altezza', y='peso', hue='Fascia_eta', palette='viridis')
+        sns.scatterplot(data=self.df, x='altezza', y='peso', hue='Fascia_eta', palette='viridis') # uso di scatterplot che crea un grafico a dispersione
         plt.title('Dati Originali - Età raggruppata')
         plt.legend(title="Fasce d'età", bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
         plt.tight_layout(rect=[0, 0, 0.85, 1])  # Spazio a destra per la legenda
@@ -59,7 +59,7 @@ class Normalizer:
         
         # Grafico dei dati normalizzati
         plt.figure(figsize=(10, 5))
-        sns.scatterplot(data=self.df_normalized, x='altezza', y='peso', hue='Fascia_eta', palette='viridis')
+        sns.scatterplot(data=self.df_normalized, x='altezza', y='peso', hue='Fascia_eta', palette='viridis') # uso di scatterplot che crea un grafico a dispersione
         plt.title('Dati Normalizzati - Età raggruppata')
         plt.legend(title="Fasce d'età", bbox_to_anchor=(1.02, 1), loc='upper left', borderaxespad=0)
         plt.tight_layout(rect=[0, 0, 0.85, 1])
