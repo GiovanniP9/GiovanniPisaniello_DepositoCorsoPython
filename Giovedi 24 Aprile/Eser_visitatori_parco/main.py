@@ -35,6 +35,7 @@ class VisitatoriParco:
     #metodo per il grafico dei visitatori giornalieri con media mobile a 7 giorni per mostrare la tendenza settimanale
     def grafico_visitatori_giornaliero(self):
         plt.figure(figsize=(14, 7))
+        sns.set_theme(style="darkgrid") # Imposta lo stile del grafico
         sns.lineplot(data=self.df, x=self.df.index, y='Visitatori', label='Visitatori Giornalieri', color='blue', alpha=0.5)
         sns.lineplot(x=self.df.index, y=self.df['Visitatori'].rolling(window=7).mean(), label='Media Mobile 7 Giorni', color='red')# il rolling window è settato a 7 giorni cosi da avere una media mobile settimanale
         plt.title('Visitatori Giornalieri con Media Mobile a 7 Giorni')
@@ -49,6 +50,7 @@ class VisitatoriParco:
     def grafico_media_mensile(self):
         media_mensile, _ = self.statistiche_mensili() # Ottiene la media mensile
         plt.figure(figsize=(14, 7))
+        sns.set_theme(style="darkgrid") # Imposta lo stile del grafico
         sns.lineplot(x=media_mensile.index.strftime('%Y-%m'), y=media_mensile.values, marker='o', label='Media Mensile', color='green')
         plt.title('Media Mensile dei Visitatori')
         plt.xlabel('Data')
