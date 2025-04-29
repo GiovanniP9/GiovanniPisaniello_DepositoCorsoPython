@@ -17,6 +17,7 @@ class HousePriceCleaner:
     def clean_data(self):
         # data → datetime
         self.df['date'] = pd.to_datetime(self.df['date'], errors='coerce')
+        self.df.drop(columns=['id'], inplace=True)
 
         # rimuovi duplicati e NaN
         self.df.drop_duplicates(inplace=True)
