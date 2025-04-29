@@ -1,8 +1,7 @@
 import os
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
+
 
 class HousePriceCleaner:
     def __init__(self, base_dir: str, input_file: str, output_file: str):

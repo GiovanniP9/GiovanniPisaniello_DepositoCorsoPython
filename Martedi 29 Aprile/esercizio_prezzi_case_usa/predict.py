@@ -212,7 +212,6 @@ class HousePricePredictor:
         self.train_model()
         self.evaluate_model()
         self.visualize_results()
-        self.optimize_features_vif()
 
 
 if __name__ == "__main__":
