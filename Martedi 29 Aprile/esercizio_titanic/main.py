@@ -7,6 +7,8 @@ from sklearn.decomposition import PCA
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.metrics import classification_report, confusion_matrix
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, r2_score
 import os
 
 # Caricamento del dataset Titanic
@@ -18,9 +20,35 @@ df = titanic.copy()
 # Funzione per stampare separatori di sezione
 def separatore(title):
     print(f"\n{'='*10} {title} {'='*10}\n") 
+    
+def grafico_boxplot_modello(final_df):
+    separatore("Boxplot delle Feature del Modello Ottimizzato")
+    numeric_columns = final_df.select_dtypes(include=['float64', 'int64']).columns
+    
+    if numeric_columns.empty:
+        print("Non ci sono colonne numeriche nel dataset del modello.")
+        return
+    
+    plt.figure(figsize=(12, 8))
+    sns.boxplot(data=final_df[numeric_columns], orient='h', palette='Set3')
+    plt.title("Boxplot delle Feature del Modello Ottimizzato", fontsize=16)
+    plt.xlabel("Valori", fontsize=12)
+    plt.ylabel("Feature", fontsize=12)
+    plt.grid(axis='x', linestyle='--', alpha=0.7)
+    plt.show()
+    
+def rimuovi_multicollinearita(df, soglia=0.9):
+    separatore("Rimozione Colonne Multicollineari")
+    corr_matrix = df.corr().abs()
+    upper_triangle = corr_matrix.where(np.triu(np.ones(corr_matrix.shape), k=1).astype(bool))
+    to_drop = [column for column in upper_triangle.columns if any(upper_triangle[column] > soglia)]
+    print(f"Colonne rimosse per multicollinearità (soglia > {soglia}): {to_drop}")
+    df = df.drop(columns=to_drop)
+    return df
 
 # Funzione principale del menu
 def menu():
+    global df  # Rende df accessibile all'interno della funzione
     while True:
         # Mostra il menu all'utente
         print("\nMenu:")
@@ -33,6 +61,8 @@ def menu():
         print("7. Preparazione del dataset per il modello")  # Opzione per preparare il dataset
         print("8. Creazione e valutazione del modello predittivo")  # Opzione per creare un modello
         print("9. Ottimizzazione del modello predittivo")  # Opzione per ottimizzare il modello
+        print("10. Regressione lineare con accuratezza e R quadro")  # Aggiunta al menu
+        print("11. Visualizzazione Boxplot delle Feature")  # Aggiunta al menu
         print("0. Esci")  # Opzione per uscire
         
         # Input dell'utente
@@ -145,6 +175,7 @@ def menu():
             columns_to_keep = ['Pclass', 'Age', 'SibSp', 'Parch', 'Fare', 'FamilySize', 'IsAlone'] + \
                               [col for col in df.columns if col.startswith('Sex_') or col.startswith('Embarked_')]
             final_df = df[columns_to_keep]
+            final_df = rimuovi_multicollinearita(final_df)
 
             print("\nColonne usate:\n", final_df.columns.tolist())
         elif scelta == "8":
@@ -200,6 +231,32 @@ def menu():
 
             print(confusion_matrix(y_test, optimized_pred))
             print(classification_report(y_test, optimized_pred))
+        elif scelta == "10":
+            # Regressione lineare
+            separatore("10. Regressione Lineare")
+            try:
+                X = final_df
+                y = df['Survived']
+                X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+                # Modello di regressione lineare
+                regression_model = LogisticRegression()  # Puoi usare anche LinearRegression per regressione continua
+                regression_model.fit(X_train, y_train)
+
+                y_pred = regression_model.predict(X_test)
+
+                # Calcolo delle metriche
+                accuracy = accuracy_score(y_test, y_pred)
+                print(f"Accuratezza del modello di regressione: {accuracy:.2f}")
+
+                # R² è significativo solo per regressione continua
+                y_pred_proba = regression_model.predict_proba(X_test)[:, 1]  # Probabilità per la classe positiva
+                r2 = r2_score(y_test, y_pred_proba)
+                print(f"R quadro del modello di regressione: {r2:.2f}")
+            except NameError:
+                print("Il dataset o il modello non sono stati preparati. Seleziona prima l'opzione 7 o 9.")
+        elif scelta == "11":
+            grafico_boxplot_modello(final_df)
         elif scelta == "0":
             # Uscita dal programma
             print("Uscita dal programma.")
