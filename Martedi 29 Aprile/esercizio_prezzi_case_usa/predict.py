@@ -10,6 +10,10 @@ from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 # Importazioni aggiuntive per il calcolo VIF
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 from statsmodels.tools.tools import add_constant
+import statsmodels.api as sm
+from statsmodels.stats.outliers_influence import variance_inflation_factor
+from sklearn.linear_model import Ridge, Lasso
+
 
 class HousePricePredictor:
     def __init__(self, base_dir: str, input_file: str):
@@ -188,18 +192,23 @@ class HousePricePredictor:
     def evaluate_model(self):
         """Valuta le prestazioni del modello"""
         self.y_pred = self.model.predict(self.X_test)
-        
+
         # Calcola le metriche
         r2 = r2_score(self.y_test, self.y_pred)
         rmse = np.sqrt(mean_squared_error(self.y_test, self.y_pred))
         mae = mean_absolute_error(self.y_test, self.y_pred)
-        
+
+        # Normalizzazione RMSE e MAE
+        y_range = self.y_test.max() - self.y_test.min()
+        rmse_normalized = rmse / y_range
+        mae_normalized = mae / y_range
+
         print("\nValutazione del modello:")
         print(f"R² Score: {r2:.4f}")
-        print(f"RMSE: ${rmse:.2f}")
-        print(f"MAE: ${mae:.2f}")
-        
-        return r2, rmse, mae
+        print(f"RMSE Normalizzato: {rmse_normalized:.4f}")
+        print(f"MAE Normalizzato: {mae_normalized:.4f}")
+
+        return r2, rmse_normalized, mae_normalized
     
     def visualize_results(self):
         """Visualizza i risultati della previsione"""
@@ -218,6 +227,108 @@ class HousePricePredictor:
         
         # Mostra la figura
         plt.show()
+        
+    def elimina_variabili_vif_pvalue(X_train, y_train, vif_threshold=10.0, pvalue_threshold=0.05):
+        """
+        Rimuove variabili da X_train basandosi su VIF e p-value.
+    
+        - Elimina solo variabili con VIF > soglia e p-value > soglia.
+        - Ricalcola VIF e p-value dopo ogni eliminazione.
+        """
+    
+        # Copia dei dati per lavorare in sicurezza
+        X_current = X_train.copy()
+    
+        # Aggiungi costante per statsmodels
+        X_const = sm.add_constant(X_current)
+    
+        while True:
+            # Modello OLS per calcolare p-value
+            model = sm.OLS(y_train, X_const).fit()
+            pvalues = model.pvalues.drop('const')  # escludi l'intercetta
+        
+            # Calcolo VIF
+            vif = pd.DataFrame()
+            vif["Feature"] = X_current.columns
+            vif["VIF"] = [variance_inflation_factor(X_current.values, i) for i in range(X_current.shape[1])]
+        
+            # Unisco p-value e VIF
+            stats = vif.copy()
+            stats["p-value"] = pvalues.values
+        
+            # Trova candidati da eliminare: VIF alto + p-value alto
+            candidates = stats[(stats["VIF"] > vif_threshold) & (stats["p-value"] > pvalue_threshold)]
+        
+            if candidates.empty:
+                print("\nNessuna variabile da eliminare. Selezione completata.")
+                break
+        
+            # Elimina la variabile con il VIF più alto tra i candidati
+            worst_feature = candidates.sort_values(by="VIF", ascending=False)["Feature"].iloc[0]
+            print(f"Rimuovo '{worst_feature}' con VIF = {candidates.loc[candidates['Feature'] == worst_feature, 'VIF'].values[0]:.2f} "
+                  f"e p-value = {candidates.loc[candidates['Feature'] == worst_feature, 'p-value'].values[0]:.4f}")
+            
+            #Aggiorna i dati
+            X_current = X_current.drop(columns=[worst_feature])
+            X_const = sm.add_constant(X_current)
+    
+        return X_current 
+    def train_ridge(self, alpha=1.0):
+        """Addestra un modello Ridge"""
+        model = Ridge(alpha=alpha)
+        model.fit(self.X_train, self.y_train)
+        y_pred = model.predict(self.X_test)
+
+        # Calcola le metriche
+        r2 = r2_score(self.y_test, y_pred)
+        rmse = np.sqrt(mean_squared_error(self.y_test, y_pred))
+        mae = mean_absolute_error(self.y_test, y_pred)
+
+        # Normalizzazione RMSE e MAE
+        y_range = self.y_test.max() - self.y_test.min()
+        rmse_normalized = rmse / y_range
+        mae_normalized = mae / y_range
+
+        print("\n[Ridge Regression]")
+        print(f"R² Score: {r2:.4f}")
+        print(f"RMSE Normalizzato: {rmse_normalized:.4f}")
+        print(f"MAE Normalizzato: {mae_normalized:.4f}")
+
+        return model
+
+    def train_lasso(self, alpha=0.1):
+        """Addestra un modello Lasso"""
+        model = Lasso(alpha=alpha, max_iter=10000)
+        model.fit(self.X_train, self.y_train)
+        y_pred = model.predict(self.X_test)
+
+        # Calcola le metriche
+        r2 = r2_score(self.y_test, y_pred)
+        rmse = np.sqrt(mean_squared_error(self.y_test, y_pred))
+        mae = mean_absolute_error(self.y_test, y_pred)
+
+        # Normalizzazione RMSE e MAE
+        y_range = self.y_test.max() - self.y_test.min()
+        rmse_normalized = rmse / y_range
+        mae_normalized = mae / y_range
+
+        print("\n[Lasso Regression]")
+        print(f"R² Score: {r2:.4f}")
+        print(f"RMSE Normalizzato: {rmse_normalized:.4f}")
+        print(f"MAE Normalizzato: {mae_normalized:.4f}")
+
+        return model
+
+    def _print_metrics(self, y_pred):
+        """Stampa le metriche di valutazione"""
+        r2 = r2_score(self.y_test, y_pred)
+        rmse = np.sqrt(mean_squared_error(self.y_test, y_pred))
+        mae = mean_absolute_error(self.y_test, y_pred)
+    
+        print(f"R² Score: {r2:.4f}")
+        print(f"RMSE: ${rmse:.2f}")
+        print(f"MAE: ${mae:.2f}")
+
     
     def run(self, visualize=True):
         """
@@ -286,6 +397,18 @@ class HousePricePredictor:
             print("=" * 50)
             print(f"Feature utilizzate ({len(results['features'])}): {', '.join(results['features']) if results['features'] else 'Tutte'}")
             print(f"Performance: R² = {r2:.4f}, RMSE = ${rmse:.2f}, MAE = ${mae:.2f}")
+            print(HousePricePredictor.elimina_variabili_vif_pvalue(self.X_train, self.y_train))
+            
+            # Fase 6: Ridge e Lasso (opzionale)
+            print("\n" + "=" * 50)
+            print("CONFRONTO MODELLI: Ridge e Lasso")
+            print("=" * 50)
+
+            self.train_ridge(alpha=1.0)
+            self.train_lasso(alpha=0.1)
+            
+            HousePricePredictor._print_metrics(self.y_pred)
+
             
             return results
             
