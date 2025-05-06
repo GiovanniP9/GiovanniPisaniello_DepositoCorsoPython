@@ -1,5 +1,5 @@
 from tensorflow import keras
-from tensorflow.keras import layers
+from keras import layers
 from sklearn.datasets import fetch_california_housing
 from sklearn.model_selection import train_test_split
 import pandas as pd
@@ -80,3 +80,4 @@ epochs=30,
 validation_data=(X_valid, y_valid),
 callbacks=[tensorboard_cb]
 )
+
