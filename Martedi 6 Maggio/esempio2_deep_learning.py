@@ -5,7 +5,6 @@ from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import root_mean_squared_error
 
-
 #Caricamento del dataset
 housing = fetch_california_housing()
 X = housing.data
